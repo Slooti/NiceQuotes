@@ -8,11 +8,17 @@ const data = [
 ]
 
 export default class App extends Component {
+  state = {
+    index: 0
+  };
+
   render() {
-
-    const quote = data[2];
-
-    return (
+    let index = this.state.index;
+    const quote = data[index];
+    let nextIndex = index + 1;
+    if (nextIndex == data.length) nextIndex = 0;
+  
+    return (    
       <View style={styles.container}>
         <Text>
           {quote.text}
@@ -20,7 +26,8 @@ export default class App extends Component {
         <Text>-- {quote.author}</Text>
         <Button 
           title="Nächstes Zitat" 
-          onPress={() => alert('Es klappt!')} 
+          onPress={() =>
+            this.setState({ index: nextIndex})} 
           />
       </View>
     );
