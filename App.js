@@ -1,13 +1,31 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
+const data = [
+  {text: 'Probleme kann man nicht mit derselben Denkweise lösen, wie sie entstanden sind.', author: 'Albert Einstein'},
+  {text: 'Man braucht nichts im Leben zu rüchten, man muss nur alles verstehen.', author: 'Marie Curie'},
+  {text: 'Nichts ist so beständig wie der Wandel.', author: 'Heraklit'}
+]
+
+export default class App extends Component {
+  render() {
+
+    const quote = data[2];
+
+    return (
+      <View style={styles.container}>
+        <Text>
+          {quote.text}
+        </Text>
+        <Text>-- {quote.author}</Text>
+        <Button 
+          title="Nächstes Zitat" 
+          onPress={() => alert('Es klappt!')} 
+          />
+      </View>
+    );
+  }
+  }
 
 const styles = StyleSheet.create({
   container: {
